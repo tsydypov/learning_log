@@ -7,7 +7,7 @@ class Topic(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        """Return string value of model"""
+        """Return string representation of model"""
         return self.text
 
 
@@ -21,4 +21,8 @@ class Entry(models.Model):
         verbose_name_plural = 'entries'
 
     def __str__(self):
-        return self.text[:50] + "..."
+        """Return a string representation of the model."""
+        if len(self.text) >= 50:
+            return self.text[:50] + "..."
+        else:
+            return self.text[:50]
